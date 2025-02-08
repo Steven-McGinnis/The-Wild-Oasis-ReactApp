@@ -1,3 +1,4 @@
+import { se } from "date-fns/locale";
 import { useSearchParams } from "react-router-dom";
 import styled, { css } from "styled-components";
 
@@ -42,6 +43,7 @@ const Filter = ({filterField, options}) => {
 
   function handleClick(value) {
     searchParams.set(filterField, value)
+    if(searchParams.get('page')) searchParams.set('page', 1)
     setSearchParams(searchParams)
   }
 
