@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import { styled } from 'styled-components';
 import { useDarkMode } from '../context/DarkModeContext';
 
 const StyledLogo = styled.div`
