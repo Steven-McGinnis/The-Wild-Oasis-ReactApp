@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import { styled } from 'styled-components';
 import Button from './Button';
 import Heading from './Heading';
 
@@ -25,21 +25,23 @@ function ConfirmDelete({ resourceName, onConfirm, disabled, onCloseModal }) {
     <StyledConfirmDelete>
       <Heading as='h3'>Delete {resourceName}</Heading>
       <p>
-        Are you sure you want to delete this {resourceName} permanently? This
-        action cannot be undone.
+        Are you sure you want to delete this {resourceName} permanently? This action cannot be
+        undone.
       </p>
 
       <div>
         <Button
           variation='secondary'
           onClick={onCloseModal}
-          disabled={disabled}>
+          disabled={disabled}
+        >
           Cancel
         </Button>
         <Button
           variation='danger'
           onClick={onConfirm}
-          disabled={disabled}>
+          disabled={disabled}
+        >
           Delete
         </Button>
       </div>

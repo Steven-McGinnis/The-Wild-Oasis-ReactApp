@@ -5,10 +5,20 @@ import FormRow from '../../ui/FormRow';
 import Input from '../../ui/Input';
 
 import { useUpdateUser } from './useUpdateUser';
+import { useUser } from './useUser';
 
 function UpdatePasswordForm() {
   const { register, handleSubmit, formState, getValues, reset } = useForm();
   const { errors } = formState;
+
+  const {
+    user: {
+      email,
+      user_metadata: { fullName: currentFullName },
+    },
+  } = useUser();
+
+  console.log(email);
 
   const { updateUser, isUpdating } = useUpdateUser();
 
@@ -48,8 +58,7 @@ function UpdatePasswordForm() {
           disabled={isUpdating}
           {...register('passwordConfirm', {
             required: 'This field is required',
-            validate: (value) =>
-              getValues().password === value || 'Passwords need to match',
+            validate: (value) => getValues().password === value || 'Passwords need to match',
           })}
         />
       </FormRow>
@@ -61,7 +70,10 @@ function UpdatePasswordForm() {
         >
           Cancel
         </Button>
-        <Button disabled={isUpdating}>Update password</Button>
+        {email === 'veyer62513@hudisk.com' && (
+          <p>This is the test user for people testing the app so you cannot update the password.</p>
+        )}
+        <Button disabled={isUpdating || email === 'veyer62513@hudisk.com'}>Update password</Button>
       </FormRow>
     </Form>
   );

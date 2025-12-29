@@ -1,7 +1,7 @@
 import { cloneElement, createContext, useContext, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { HiXMark } from 'react-icons/hi2';
-import styled from 'styled-components';
+import { styled } from 'styled-components';
 import { useOutsideClick } from '../hooks/useOutsideClick';
 
 const StyledModal = styled.div`
@@ -59,9 +59,7 @@ function Modal({ children }) {
   const open = setOpenName;
 
   return (
-    <ModalContext.Provider value={{ openName, close, open }}>
-      {children}
-    </ModalContext.Provider>
+    <ModalContext.Provider value={{ openName, close, open }}>{children}</ModalContext.Provider>
   );
 }
 
